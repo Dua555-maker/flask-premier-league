@@ -15,7 +15,7 @@
       </div>
       <div class="mb-3">
         <label for="position" class="form-label">Select Position</label>
-        <select name="position" class="form-select" aria-label="Default select example">
+        <select name="position" class="form-select" id="position" onchange="checkSelection()" aria-label="Default select example">
           <option value="Goalkeeper">Goalkeeper</option>
           <option value="Defender">Defender</option>
           <option value="Midfielder">Midfielder</option>
@@ -30,7 +30,10 @@
         <label for="goals" class="form-label">Goals</label>
         <input name="goals" type="number" class="form-control" id="goals" required>
       </div>
-
+      <div class="mb-3">
+        <label for="clean_sheets" class="form-label">Clean Sheets</label>
+        <input name="clean_sheets" type="number" class="form-control" id="clean_sheets" required>
+      </div>
       <div class="mb-3">
         <label for="squad_no" class="form-label">Squad Number</label>
         <input name="squad_no" type="number" class="form-control" id="squad_no" required>
@@ -55,4 +58,19 @@
       </button>
     </form>
   </div>
+
+<script>
+  function checkSelection() {
+    var selectElement = document.getElementById("position");
+    var disabledclean_sheets = document.getElementById("clean_sheets");
+    var selectedValue = selectElement.value;
+
+    if (selectedValue !== "Goalkeeper") {
+      disabledclean_sheets.disabled = true;
+    } else {
+      disabledclean_sheets.disabled = false;
+    }
+  }
+</script>
+
 {% endblock %}
